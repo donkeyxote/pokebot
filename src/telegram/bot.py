@@ -56,12 +56,12 @@ class TelegramBot:
             if message is not None:
                 text = message.get_text()
                 if text is not None and text.startswith('/'):
-                        command = text.split(sep=' ', maxsplit=1)[0][1:]
-                        if command == 'cerca':
-                            name = text.split(sep=' ', maxsplit=3)[1]
-                            pkmn = Pokemon(name=name, db=self.__db)
-                            if pkmn.get_name() is not None:
-                                res = self.format_pokemon(pkmn)
+                    command = text.split(sep=' ', maxsplit=1)[0][1:]
+                    if command == 'cerca':
+                        name = text.split(sep=' ', maxsplit=3)[1]
+                        pkmn = Pokemon(name=name, db=self.__db)
+                        if pkmn.get_name() is not None:
+                            res = self.format_pokemon(pkmn)
                 if res:
                     requests.get(self.__url.format('sendMessage'),
                                  params={'parse_mode': 'Markdown', 'chat_id': message.get_chat().get_id(), 'text': res})

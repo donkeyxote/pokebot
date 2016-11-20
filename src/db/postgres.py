@@ -61,7 +61,7 @@ class Database:
     @staticmethod
     def parse_where(where=None):
         if where is None:
-            return ''
+            return '', ''
         else:
             row = []
             sql = 'WHERE {} {} {} AND {}'
@@ -77,7 +77,7 @@ class Database:
     @staticmethod
     def parse_set(columns, data):
         if columns is None or data is None:
-            return ''
+            return '', ''
         else:
             sql = 'SET {} = {}, {}'
             row = []
